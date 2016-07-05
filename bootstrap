@@ -1,0 +1,24 @@
+#                         ____        __  _____ __         
+#                        / __ \____  / /_/ __(_) /__  _____
+#                       / / / / __ \/ __/ /_/ / / _ \/ ___/
+#                      / /_/ / /_/ / /_/ __/ / /  __(__  ) 
+#                     /_____/\____/\__/_/ /_/_/\___/____/  
+#                                                          
+
+cd $HOME/dotfiles
+
+# Install zsh
+sudo apt-get install zsh
+
+chsh -s $(which zsh)
+sudo chsh -s $(which zsh) root
+
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+stow zsh
+
+# Install tmux
+sudo apt-get install tmux
+stow tmux
+

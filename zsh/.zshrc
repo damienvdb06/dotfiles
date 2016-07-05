@@ -82,5 +82,8 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+autoload -Uz compinit
+compinit
+
 alias please="sudo !!" 
 
