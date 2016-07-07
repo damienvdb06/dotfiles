@@ -25,4 +25,10 @@ stow tmux
 # Install ranger
 sudo apt-get -y install ranger
 
+# Install Dark Grey theme
+stow themes
+
+# Install conky
+sudo apt-get -y install conky
+stow conky
 
