@@ -1,3 +1,4 @@
+#! /bin/bash
 #                         ____        __  _____ __         
 #                        / __ \____  / /_/ __(_) /__  _____
 #                       / / / / __ \/ __/ /_/ / / _ \/ ___/
@@ -24,6 +25,7 @@ stow tmux
 
 # Install ranger
 sudo apt-get -y install ranger
+sudo apt-get -y install highlight atool pdftotext w3m
 
 # Install Dark Grey theme
 stow themes
