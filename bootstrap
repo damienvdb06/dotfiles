@@ -25,7 +25,7 @@ stow tmux
 
 # Install ranger
 sudo apt-get -y install ranger
-sudo apt-get -y install highlight atool pdftotext w3m
+sudo apt-get -y install highlight atool w3m
 
 # Install Dark Grey theme
 stow themes
