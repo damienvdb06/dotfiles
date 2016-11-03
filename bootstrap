@@ -34,3 +34,6 @@ stow themes
 sudo apt-get -y install conky
 stow conky
 
+# Install htop
+sudo apt-get install htop
+

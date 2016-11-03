@@ -69,3 +69,5 @@ compinit
 
 setopt extendedglob
 
+alias mci="mvn clean install"
+
