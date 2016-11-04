@@ -37,3 +37,5 @@ stow conky
 # Install htop
 sudo apt-get install htop
 
+# Install direnv whenever you need to handle multiple envs
+
