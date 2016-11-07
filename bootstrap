@@ -35,7 +35,12 @@ sudo apt-get -y install conky
 stow conky
 
 # Install htop
-sudo apt-get install htop
+sudo apt-get -y install htop
 
 # Install direnv whenever you need to handle multiple envs
+
+# Install shellshape for tiling windows
+
+# Install lnav to view log files
+sudo apt-get -y install lnav
 
