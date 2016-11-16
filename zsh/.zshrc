@@ -70,4 +70,5 @@ compinit
 setopt extendedglob
 
 alias mci="mvn clean install"
+alias docker_purge_unused_images="docker rmi $(docker images | grep '^<none>' | awk '{print $3}' | tr '\n' ' ')"
 
