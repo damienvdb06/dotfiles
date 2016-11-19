@@ -19,6 +19,13 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 stow zsh
 
+# Install Dark Grey theme
+stow themes
+
+# Install i3
+sudo apt-get -y install i3 xbacklight feh arandr lxappearance compton i3blocks
+stow i3
+
 # Install tmux
 sudo apt-get -y install tmux
 stow tmux
@@ -26,9 +33,6 @@ stow tmux
 # Install ranger
 sudo apt-get -y install ranger
 sudo apt-get -y install highlight atool w3m
-
-# Install Dark Grey theme
-stow themes
 
 # Install conky
 sudo apt-get -y install conky
