@@ -27,13 +27,13 @@ font pango:System San Francisco Display 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -fn '-*-*-medium-*-normal-*-14-*-*-*-*-*-*-*'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -89,29 +89,40 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $w1 1:   
+# Terminal
+set $w2 2:   
+# Code
+set $w3 3:   
+# Chrome
+set $w4 4:   
+# Github
+set $w5 5:   
+# Slack
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace w6
+bindsym $mod+7 workspace w7
+bindsym $mod+8 workspace w8
+bindsym $mod+9 workspace w9
+bindsym $mod+0 workspace w10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace w6
+bindsym $mod+Shift+7 move container to workspace w7
+bindsym $mod+Shift+8 move container to workspace w8
+bindsym $mod+Shift+9 move container to w9
+bindsym $mod+Shift+0 move container to w10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -166,12 +177,14 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 # bar
 bar {
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+	status i3blocks -c ~/.i3/i3blocks.conf
+	font pango:System San Francisco Display 12
+	position top
         colors {
                 background $bg-color
                 separator #757575
                 #                  border             background         text
-                focused_workspace  $bg-color          $bg-color          $text-color
+                focused_workspace  $bg-color        $bg-color          $text-color
                 inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
                 urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
@@ -190,5 +203,14 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
+exec --no-startup-id compton 
+exec --no-startup-id nm-applet
 exec_always feh --bg-scale /home/damien/Images/wallpaper.png
-# exec_always conky
+exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id conky
+exec --no-startup-id xbacklight -set 70
+
+exec --no-startup-id i3-msg 'workspace $w5; exec google-chrome https://zenika.slack.com'
+for_window [title="Slack"] move workspace $w5
+
+assign [class="jetbrains-idea-ce"] $w2
