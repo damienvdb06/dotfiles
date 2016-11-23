@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/damien/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 #export TERM=screen-256color
 # Set name of the theme to load.
@@ -48,7 +48,7 @@ ZSH_TMUX_AUTOSTART="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mvn tmux)
+plugins=(git mvn)
 
 # User configuration
 
@@ -70,5 +70,5 @@ compinit
 setopt extendedglob
 
 alias mci="mvn clean install"
-alias docker_purge_unused_images="docker rmi $(docker images | grep '^<none>' | awk '{print $3}' | tr '\n' ' ')"
-
+alias mcid="mvn clean install -DskipTests"
+alias t="~/.todo/todo.sh"

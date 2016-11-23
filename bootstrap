@@ -6,7 +6,13 @@
 #                     /_____/\____/\__/_/ /_/_/\___/____/  
 #                                                          
 
+set -o nounset
+set -o errexit
+
 cd $HOME/dotfiles
+
+# Install stow
+sudo apt-get -y install stow
 
 # Install zsh
 sudo apt-get -y install zsh
@@ -15,6 +21,7 @@ chsh -s $(which zsh)
 sudo chsh -s $(which zsh) root
 
 # Install oh-my-zsh
+sudo apt-get install curl
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 stow zsh
@@ -23,11 +30,11 @@ stow zsh
 stow themes
 
 # Install i3
-sudo apt-get -y install i3 xbacklight feh arandr lxappearance compton i3blocks
-stow i3
+#sudo apt-get -y install i3 xbacklight feh arandr lxappearance compton i3blocks
+#stow i3
 
 # Install tmux
-sudo apt-get -y install tmux
+sudo apt-get -y install tmux xclip
 stow tmux
 
 # Install ranger
@@ -43,9 +50,10 @@ sudo apt-get -y install htop
 
 # Install direnv whenever you need to handle multiple envs
 
-# Install shellshape for tiling windows
-
 # Install lnav to view log files
 sudo apt-get -y install lnav
 
-echo "Set org/gnome/settings-daemon/plugins/cursor/active to false with dconf-editor"
+sudo apt-get -y install vim-gtk
+
+# Install todo
+stow todo

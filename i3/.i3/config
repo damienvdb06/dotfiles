@@ -57,6 +57,12 @@ bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+colon move right
 
+#move focused workspace
+bindsym $mod+control+j move workspace to output left
+bindsym $mod+control+semicolon move workspace to output right
+bindsym $mod+control+Left move workspace to output left
+bindsym $mod+control+Right move workspace to output right
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -177,7 +183,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 # bar
 bar {
-	status i3blocks -c ~/.i3/i3blocks.conf
+	status_command i3blocks -c ~/.i3/i3blocks.conf
 	font pango:System San Francisco Display 12
 	position top
         colors {
@@ -203,14 +209,16 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
-exec --no-startup-id compton 
+exec --no-startup-id compton -d
 exec --no-startup-id nm-applet
 exec_always feh --bg-scale /home/damien/Images/wallpaper.png
 exec --no-startup-id gnome-settings-daemon
-exec --no-startup-id conky
+# exec --no-startup-id conky
 exec --no-startup-id xbacklight -set 70
 
 exec --no-startup-id i3-msg 'workspace $w5; exec google-chrome https://zenika.slack.com'
 for_window [title="Slack"] move workspace $w5
 
 assign [class="jetbrains-idea-ce"] $w2
+
+exec --no-startup-id i3-msg 'workspace $w1; exec urxvt'
