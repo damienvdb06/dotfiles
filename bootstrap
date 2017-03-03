@@ -9,6 +9,9 @@
 set -o nounset
 set -o errexit
 
+RED='\033[0;31m'
+NC='\033[0m'
+
 function install_zsh {
     sudo apt -y install zsh
 
@@ -40,7 +43,7 @@ function install_tools {
 function install_tmux {
     sudo apt -y install tmux xclip
     stow tmux
-    echo "Edit ~/.zshrc 'plugins=' to add tmux"
+    echo -e "${RED} Edit ~/.zshrc 'plugins=' to add tmux ${NC}"
 }
 
 function install_conky {
@@ -48,13 +51,26 @@ function install_conky {
     stow conky
 }
 
+function install_themes {
+    stow themes
+}
+
+function ask {
+    local label=`echo ${1} | sed "s/_/ /g"`
+    read -p "${label} (Y/N) ? [Default : $2] : " choice
+    choice=${choice:-$2}
+    if [[ ${choice} =~ ^[Yy]$ ]]; then
+        eval $1
+    fi
+}
+
 cd $HOME/dotfiles
 
 sudo apt -y install stow
 
-install_zsh
-install_tools
-#install_i3
-#install_tmux
-#install_conky
-stow themes
+ask install_zsh Y
+ask install_tools Y
+ask install_i3 N
+ask install_tmux N
+ask install_conky N
+ask install_themes N
