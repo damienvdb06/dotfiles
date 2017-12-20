@@ -70,5 +70,14 @@ compinit
 setopt extendedglob
 
 alias mci="mvn clean install"
-alias mcid="mvn clean install -DskipTests"
+alias mcid="mvn clean install -Dmaven.test.skip=true"
 alias t="~/.todo/todo.sh"
+alias pgstart="su postgres -c '/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l ~/pg.log start'"
+alias pgstop="su postgres -c '/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l ~/pg.log stop'"
+function grbcc() {
+	local head_count=`git rev-list --count HEAD`
+	local rb_count=`git rev-list --count $1`
+	echo $(expr $head_count - $rb_count)
+}
+
+eval "$(direnv hook zsh)"
